@@ -37,11 +37,11 @@ function createElement(name, type) {
   CreateElement.displayName = name;
 
   CreateElement.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node
   };
 
   CreateElement.defaultProps = {
-    children: undefined,
+    children: undefined
   };
 
   return CreateElement;
@@ -120,3 +120,16 @@ Svg.TSpan = TSpan;
 
 export const Use = createElement("Use", "use");
 Svg.Use = Use;
+
+const SvgUriComponent = ({uri, ...props}) => {
+  return createReactElement("img", {src: uri, ...props});
+};
+
+SvgUriComponent.displayName = "SvgUri";
+SvgUriComponent.propTypes = {
+  uri: PropTypes.string,
+  children: PropTypes.node
+};
+
+export const SvgUri = SvgUriComponent;
+Svg.SvgUri = SvgUri;
